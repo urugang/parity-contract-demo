@@ -1,0 +1,43 @@
+[parity]
+chain = "demo-spec.json"
+base_path = "./data/node1"
+
+[account]
+# unlock = ["0x00A3B53A724C22c6D385A4137c72449f17D0883F",
+#        "0x00bF10fA4ACE94E3CcE3ECAB6552d7794F1De85b"]
+password=["node1.pwds"]
+
+[ui]
+force=true
+disable=false
+port = 8180
+hosts = ["all"]
+
+[network]
+port = 30300
+
+[rpc]
+port = 8545
+apis = ["web3", "eth", "net", "parity", "parity_set", "traces", "rpc", "parity_accounts", "personal"]
+
+
+[websockets]
+disable = false
+port = 8546
+
+[ipc]
+disable = false
+
+[dapps]
+disable = false
+
+[secretstore]
+disable = true
+
+[ipfs]
+enable = false
+
+[mining]
+author = "0x00A3B53A724C22c6D385A4137c72449f17D0883F"
+engine_signer = "0x00A3B53A724C22c6D385A4137c72449f17D0883F"
+reseal_on_txs = "none"
