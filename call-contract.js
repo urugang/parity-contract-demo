@@ -123,7 +123,7 @@ let abi = [
         "name": "value",
         "type": "uint256"
       }
-d    ],
+    ],
     "name": "Transfer",
     "type": "event"
   },
@@ -142,7 +142,7 @@ d    ],
 ]
 
 
-dlet BasicContract = web3.eth.contract(abi);
+let BasicContract = web3.eth.contract(abi);
 basicContract = BasicContract.at(contractAddress);
 console.log("basicContract.balance[accounts[0]]: %s",
 			basicContract.balanceOf(accounts[0]));

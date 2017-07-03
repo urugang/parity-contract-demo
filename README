@@ -1,6 +1,10 @@
+* build&install parity
+  [[https://github.com/paritytech/parity][parity]]
 
-* setup parity poa 
-[[https://medium.com/taipei-ethereum-meetup/%E4%BD%BF%E7%94%A8parity%E5%BB%BA%E7%AB%8Bproof-of-authority-poa-ethereum-chain-c5c1cdd0f21a][使用parity建立proof-of-authority]]
+* setup parity poa
+  refer to:
+    1)  [[https://medium.com/taipei-ethereum-meetup/%E4%BD%BF%E7%94%A8parity%E5%BB%BA%E7%AB%8Bproof-of-authority-poa-ethereum-chain-c5c1cdd0f21a][使用parity建立proof-of-authority]]
+    2)  [[https://github.com/paritytech/parity/wiki/Demo-PoA-tutorial][Demo-PoA-tutorial]]
 
 #+begin_src shell
   $ bash setup.sh 
@@ -17,6 +21,7 @@
 #+end_src
 
 * create contract
+
 #+begin_src shell
 $ node create-contract.js 
 connected to ehterum node at http://localhost:8545
@@ -144,8 +149,10 @@ gasEstimate = 405197
 deploying contract...
 basicContract.transactionHash = 0x353fa26642f16afce16fba9708c4a3a47b038ac1a7a79dbe1d29505982d02445
 #+end_src
+
 * call contract
-one problem is that unlock succeeded, but you have to input password in web ui.
+when web ui is enabled, even you unlock account in web3 successfully, you have to input password again in web ui.
+
 #+begin_src shell
 $ node call-contract.js 
 connected to ehterum node at http://localhost:8545
@@ -193,8 +200,5 @@ Whoami event:
   type: 'mined',
   event: 'Whoami',
   args: { me: '0x00ae9aa07ad975feb85403866a64f09c1e2e05f7' } }
-
-
-
 #+end_src
 
