@@ -32,25 +32,5 @@ const Contract = web3.eth.contract(contractAbi);
 const contract = Contract.at(contractAddress);
 
 
-console.log("4) watch Transfer event and call transfer");
-let transferEvent = contract.Transfer([],
-									   function(err, result) {
-										   console.log("Transafer event:");
-										   console.log("%o", result);
-									   });
-console.log("%s ", contract.transfer(accounts[0], 223, { from: accounts[1]}));
-setTimeout(function(){
-	transferEvent.stopWatching();
-}, 10000);
-
-
 console.log("5) watch Whoami event and call whoami");
-let whoamiEvent = contract.Whoami([],
-									   function(err, result) {
-										   console.log("Whoami event:");
-										   console.log("%o", result);
-									   });
-console.log("%s ", contract.whoami({from: accounts[0]}));
-setTimeout(function(){
-	whoamiEvent.stopWatching();
-}, 10000);
+console.log("%s ", contract.func1(0x22345678, {from: accounts[0]}));

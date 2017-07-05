@@ -1,79 +1,65 @@
+#!/usr/bin/env node
 // npm install -g solc
 // npm install -g ethereumjs-testrpc
 const Web3 = require('web3');
 const fs = require('fs');
 const solc = require('solc');
-const ethereumUri = 'http://localhost:8545';
-let web3 = new Web3();
-/*
- * connect to ethereum node
- */
+const client = 'http://localhost:8545';
+const web3 = new Web3();
+const contractFile = process.argv[2];
+const secrets = [ "node0", "user0"];
 
 
-web3.setProvider(new web3.providers.HttpProvider(ethereumUri));
+// 1) connect to ethereum node
+console.log('1) connect to ethereum node: %s', client);
+web3.setProvider(new web3.providers.HttpProvider(client));
 if(!web3.isConnected()){
-    throw new Error('unable to connect to ethereum node at ' + ethereumUri);
-}
-let accounts = web3.eth.accounts;
-console.log('connected to ehterum node at %s', ethereumUri);
-console.log('balance: %s ETH', web3.fromWei(web3.eth.getBalance(accounts[1]), 'ether'));
-console.log('accounts: %s', accounts);
-if (web3.personal.unlockAccount(accounts[1], "user0")){
-	console.log('%s unlocked succeeded.', accounts[1]);
-} else {
-	console.log('%s unlocked failed.', accounts[1]);
+    throw new Error('unable to connect to ethereum node at ' + client);
 }
 
-
-/*
- * Compile Contract and Fetch ABI, bytecode
- */
-let source = fs.readFileSync("./contracts/BasicToken.sol", 'utf8');
-console.log('compiling contract...');
-let compiledContract = solc.compile(source);
-console.log('done');
-for (let contractName in compiledContract.contracts) {
-    // code and ABI that are needed by web3
-    // console.log(contractName + ': ' + compiledContract.contracts[contractName].bytecode);
-    // console.log(contractName + '; ' + JSON.parse(compiledContract.contracts[contractName].interface));
-    var bytecode = compiledContract.contracts[contractName].bytecode;
-    var abi = JSON.parse(compiledContract.contracts[contractName].interface);
+// 2) unlock account
+console.log("2) unlock account");
+const accounts = web3.eth.accounts;
+for (var i=0; i < secrets.length; i++) {
+	if (!web3.personal.unlockAccount(accounts[i], secrets[i])){
+		console.log("   %s/%s: failed,", accounts[i], secrets[i]);
+		return;
+	}
+	console.log("   %s/%s: ok", accounts[i], secrets[i]);
 }
 
-console.log("abi: "+JSON.stringify(abi, undefined, 2));
+// 3) compile contract
+console.log("3) compile contract file: %s", contractFile);
+let source = fs.readFileSync(contractFile, 'utf8');
+let compiledContracts = solc.compile(source);
 
-
-/*
- * deploy contract
- */
-let gasEstimate = web3.eth.estimateGas({data: '0x' + bytecode});
-console.log('gasEstimate = ' + gasEstimate);
-
-let BasicContract = web3.eth.contract(abi);
-console.log('deploying contract...');
-
-let basicContract = BasicContract.new([], {
-    from: accounts[1],
-    data: '0x'+ bytecode,
-    gas: gasEstimate + 50000
-}, function (err, basicContract) {
-    if (!err) {
-        // NOTE: The callback will fire twice!
-        // Once the contract has the transactionHash property set and once its deployed on an address.
-
-        // e.g. check tx hash on the first call (transaction send)
-        if (!basicContract.address) {
-            console.log(`basicContract.transactionHash = ${basicContract.transactionHash}`); // The hash of the transaction, which deploys the contract
-
-            // check address on the second call (contract deployed)
-        } else {
-            console.log(`basicContract.address = ${basicContract.address}`); // the contract address
-            global.contractAddress = basicContract.address;
-        }
-
-        // Note that the returned "myContractReturned" === "myContract",
-        // so the returned "myContractReturned" object will also get the address set.
-    } else {
-        console.log(err);
-    }
-});
+// 4) deploy contract
+console.log("4) deploy contract");
+for (let name in compiledContracts.contracts) {
+	const from = accounts[1];
+    const abi = JSON.parse(compiledContracts.contracts[name].interface);
+    const bytecode = "0x" + compiledContracts.contracts[name].bytecode;
+    const gas = web3.eth.estimateGas({data: bytecode}) + 50000;
+    const Contract = web3.eth.contract(abi);
+	const contractName = name.substring(1)
+    let contract = Contract.new([],
+								{ from: from,
+								  data: bytecode,
+								  gas: gas
+								}, function (err, contract) {
+									if (err) {
+										console.log(err);
+										return;
+									}
+									if (!contract.address) {
+										console.log(`   %s.txhash: %s`, contractName, contract.transactionHash);
+									} else {
+										console.log("   %s.addr: %s", contractName, contract.address);
+										fs.writeFileSync(contractName + ".addr", contract.address);
+									}
+								});
+	fs.writeFileSync(contractName + ".abi", JSON.stringify(abi));
+	fs.writeFileSync(contractName + ".bc", bytecode);
+	console.log("   %s.abi: %s", contractName, JSON.stringify(abi));
+	console.log("   %s.bc: %s", contractName, bytecode);
+}
