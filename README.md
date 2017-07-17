@@ -26,10 +26,6 @@
 
 # setup parity poa<a id="sec-3" name="sec-3"></a>
 
-1.  [使用parity建立proof-of-authority](https://medium.com/taipei-ethereum-meetup/%E4%BD%BF%E7%94%A8parity%E5%BB%BA%E7%AB%8Bproof-of-authority-poa-ethereum-chain-c5c1cdd0f21a)
-2.  [Demo-PoA-tutorial](https://github.com/paritytech/parity/wiki/Demo-PoA-tutorial)
-3.  [使用node-js部署智能合約](https://medium.com/taipei-ethereum-meetup/%E4%BD%BF%E7%94%A8node-js%E9%83%A8%E7%BD%B2%E6%99%BA%E8%83%BD%E5%90%88%E7%B4%84-smart-contract-520534305aaf)
-
     $ ./scripts/setup.sh  
     1) reset environment  
     npm notice created a lockfile as package-lock.json. You should commit this file.  
@@ -49,6 +45,10 @@
     urugang   2824 90.0  1.4 545344 118520 pts/6   Sl+  14:28   0:01 parity --config config/node0.toml  
     urugang   2825 59.5  1.5 547396 127596 pts/6   Sl+  14:28   0:01 parity ui --config config/node1.toml --ui-no-validation --ports-shift=100  
     urugang   3716  0.0  0.0  15996  1024 pts/6    S+   14:28   0:00 grep parity
+
+-   [使用parity建立proof-of-authority](https://medium.com/taipei-ethereum-meetup/%E4%BD%BF%E7%94%A8parity%E5%BB%BA%E7%AB%8Bproof-of-authority-poa-ethereum-chain-c5c1cdd0f21a)
+-   [Demo-PoA-tutorial](https://github.com/paritytech/parity/wiki/Demo-PoA-tutorial)
+-   [使用node-js部署智能合約](https://medium.com/taipei-ethereum-meetup/%E4%BD%BF%E7%94%A8node-js%E9%83%A8%E7%BD%B2%E6%99%BA%E8%83%BD%E5%90%88%E7%B4%84-smart-contract-520534305aaf)
 
 # create contract<a id="sec-4" name="sec-4"></a>
 
