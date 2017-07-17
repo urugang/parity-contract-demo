@@ -1,6 +1,6 @@
 [parity]
 chain = "config/demo-spec.json"
-base_path = "./data/node1"
+base_path = "data/node1"
 
 [account]
 # unlock = ["0x00A3B53A724C22c6D385A4137c72449f17D0883F",
@@ -38,6 +38,5 @@ disable = true
 enable = false
 
 [mining]
-author = "0x00A3B53A724C22c6D385A4137c72449f17D0883F"
-engine_signer = "0x00A3B53A724C22c6D385A4137c72449f17D0883F"
+engine_signer = "00A3B53A724C22C6D385A4137C72449F17D0883F"
 reseal_on_txs = "none"

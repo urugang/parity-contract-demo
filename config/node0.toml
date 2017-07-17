@@ -38,6 +38,5 @@ disable = true
 enable = false
 
 [mining]
-author = "0x00AE9aA07aD975FEb85403866A64f09C1e2E05F7"
-engine_signer = "0x00AE9aA07aD975FEb85403866A64f09C1e2E05F7"
+engine_signer = "0x00a8afedf7f63bf9e8e45916af8153f109da92b9"
 reseal_on_txs = "none"
