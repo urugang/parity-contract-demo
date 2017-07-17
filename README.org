@@ -1,6 +1,6 @@
 * install [[https://github.com/paritytech/parity][parity]]
 
-#+begin_src markdown
+#+begin_src shell
   $ git clone --depth=1 git@github.com:paritytech/parity  
   $ cd parity  
   $ cargo install --force --debug  
@@ -8,7 +8,7 @@
 
 * install [[https://nodejs.org/en/][nodejs]]
 
-#+begin_src markdown
+#+begin_src shell
   $ mdkir -p ~/.local && cd ~/.local
   $ wget https://nodejs.org/dist/v8.1.4/node-v8.1.4-linux-x64.tar.xz  
   $ tar xf node-v8.1.4-linux-x64.tar.xz  
@@ -20,8 +20,8 @@
     2) [[https://github.com/paritytech/parity/wiki/Demo-PoA-tutorial][Demo-PoA-tutorial]]  
     3) [[https://medium.com/taipei-ethereum-meetup/%E4%BD%BF%E7%94%A8node-js%E9%83%A8%E7%BD%B2%E6%99%BA%E8%83%BD%E5%90%88%E7%B4%84-smart-contract-520534305aaf][使用node-js部署智能合約]]  
        
-#+begin_src markdown 
-  ls  $ ./scripts/setup.sh  
+#+begin_src shell
+  $ ./scripts/setup.sh  
     1) reset environment  
     npm notice created a lockfile as package-lock.json. You should commit this file.  
     added 71 packages in 4.521s  
@@ -44,7 +44,7 @@
 
 * create contract
 
-#+begin_src markdown
+#+begin_src shell
   $ ./js/create-contract.js  contracts/BasicToken.sol   
   1) connect to ethereum node: http://localhost:8545  
   2) unlock account  
@@ -61,7 +61,7 @@
 * call contract
 when web ui is enabled, even you unlock account in web3 successfully, you have to input password again in web ui.  
 
-#+begin_src markdown
+#+begin_src shell
   ./js/call-BasicToken.js 
   1) connect to ethereum node: http://localhost:8545
   2) unlock account

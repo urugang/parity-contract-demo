@@ -30,7 +30,7 @@
 2.  [Demo-PoA-tutorial](https://github.com/paritytech/parity/wiki/Demo-PoA-tutorial)
 3.  [使用node-js部署智能合約](https://medium.com/taipei-ethereum-meetup/%E4%BD%BF%E7%94%A8node-js%E9%83%A8%E7%BD%B2%E6%99%BA%E8%83%BD%E5%90%88%E7%B4%84-smart-contract-520534305aaf)
 
-    ls  $ ./scripts/setup.sh  
+    $ ./scripts/setup.sh  
       1) reset environment  
       npm notice created a lockfile as package-lock.json. You should commit this file.  
       added 71 packages in 4.521s  
