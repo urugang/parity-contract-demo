@@ -5,7 +5,7 @@ const solc = require('solc');
 const BigNumber=require('bignumber.js')
 const client = 'http://localhost:8545';
 const secrets = [ "node0", "user0"];
-const contractName = Abi
+const contractName = "Abi"
 
 console.log('1) connect to ethereum node: %s', client);
 let web3 = new Web3();
