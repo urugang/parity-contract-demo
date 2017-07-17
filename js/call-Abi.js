@@ -5,7 +5,7 @@ const solc = require('solc');
 const BigNumber=require('bignumber.js')
 const client = 'http://localhost:8545';
 const secrets = [ "node0", "user0"];
-const contractName = process.argv[2];
+const contractName = Abi
 
 console.log('1) connect to ethereum node: %s', client);
 let web3 = new Web3();
@@ -26,11 +26,11 @@ for (var i=0; i < secrets.length; i++) {
 }
 
 console.log("3) get abi and address")
-const contractAbi = JSON.parse(fs.readFileSync(contractName + ".abi", 'utf8'));
-const contractAddress = fs.readFileSync(contractName + ".addr", 'utf8');
+const contractAbi = JSON.parse(fs.readFileSync("data/" + contractName + ".abi", 'utf8'));
+const contractAddress = fs.readFileSync("data/" + contractName + ".addr", 'utf8');
 const Contract = web3.eth.contract(contractAbi);
 const contract = Contract.at(contractAddress);
 
 
 console.log("5) watch Whoami event and call whoami");
-console.log("%s ", contract.func1(0x22345678, {from: accounts[0]}));
+console.log("%s ", contract.setValue(0x12345678, {from: accounts[0]}));

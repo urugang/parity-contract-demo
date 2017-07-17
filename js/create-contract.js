@@ -55,11 +55,11 @@ for (let name in compiledContracts.contracts) {
 										console.log(`   %s.txhash: %s`, contractName, contract.transactionHash);
 									} else {
 										console.log("   %s.addr: %s", contractName, contract.address);
-										fs.writeFileSync(contractName + ".addr", contract.address);
+										fs.writeFileSync("data/" + contractName + ".addr", contract.address);
 									}
 								});
-	fs.writeFileSync(contractName + ".abi", JSON.stringify(abi));
-	fs.writeFileSync(contractName + ".bc", bytecode);
+	fs.writeFileSync("data/" + contractName + ".abi", JSON.stringify(abi));
+	fs.writeFileSync("data/" + contractName + ".bc", bytecode);
 	console.log("   %s.abi: %s", contractName, JSON.stringify(abi));
 	console.log("   %s.bc: %s", contractName, bytecode);
 }

@@ -1,11 +1,11 @@
 [parity]
-chain = "demo-spec.json"
+chain = "config/demo-spec.json"
 base_path = "./data/node1"
 
 [account]
 # unlock = ["0x00A3B53A724C22c6D385A4137c72449f17D0883F",
 #        "0x00bF10fA4ACE94E3CcE3ECAB6552d7794F1De85b"]
-password=["node1.pwds"]
+password=["config/node1.pwds"]
 
 [ui]
 force=true

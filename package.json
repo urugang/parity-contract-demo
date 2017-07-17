@@ -1,0 +1,29 @@
+{
+  "name": "parity-contract-demo",
+  "version": "1.0.0",
+  "description": "smart contract practice in parity",
+  "main": "",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/urugang/parity-contract-demo.git"
+  },
+  "keywords": [
+    "parity",
+    "solc",
+    "contract"
+  ],
+  "author": "urugang",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/urugang/parity-contract-demo/issues"
+  },
+  "homepage": "https://github.com/urugang/parity-contract-demo#readme",
+  "devDependencies": {},
+  "dependencies": {
+    "solc": "^0.4.13",
+    "web3": "^0.19.1"
+  }
+}

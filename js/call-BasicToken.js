@@ -5,7 +5,7 @@ const solc = require('solc');
 const BigNumber=require('bignumber.js')
 const client = 'http://localhost:8545';
 const secrets = [ "node0", "user0"];
-const contractName = process.argv[2];
+const contractName = "BasicToken";
 
 console.log('1) connect to ethereum node: %s', client);
 let web3 = new Web3();
@@ -26,8 +26,8 @@ for (var i=0; i < secrets.length; i++) {
 }
 
 console.log("3) get abi and address")
-const contractAbi = JSON.parse(fs.readFileSync(contractName + ".abi", 'utf8'));
-const contractAddress = fs.readFileSync(contractName + ".addr", 'utf8');
+const contractAbi = JSON.parse(fs.readFileSync("data/" + contractName + ".abi", 'utf8'));
+const contractAddress = fs.readFileSync("data/" + contractName + ".addr", 'utf8');
 const Contract = web3.eth.contract(contractAbi);
 const contract = Contract.at(contractAddress);
 
@@ -38,7 +38,7 @@ let transferEvent = contract.Transfer([],
 										   console.log("Transafer event:");
 										   console.log("%o", result);
 									   });
-console.log("%s ", contract.transfer(accounts[0], 223, { from: accounts[1]}));
+console.log("tx hash: %s ", contract.transfer(accounts[0], 223, { from: accounts[1]}));
 setTimeout(function(){
 	transferEvent.stopWatching();
 }, 10000);
@@ -50,7 +50,7 @@ let whoamiEvent = contract.Whoami([],
 										   console.log("Whoami event:");
 										   console.log("%o", result);
 									   });
-console.log("%s ", contract.whoami({from: accounts[0]}));
+console.log("tx hash: %s ", contract.whoami({from: accounts[0]}));
 setTimeout(function(){
 	whoamiEvent.stopWatching();
 }, 10000);
