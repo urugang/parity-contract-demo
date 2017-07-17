@@ -31,24 +31,24 @@
 3.  [使用node-js部署智能合約](https://medium.com/taipei-ethereum-meetup/%E4%BD%BF%E7%94%A8node-js%E9%83%A8%E7%BD%B2%E6%99%BA%E8%83%BD%E5%90%88%E7%B4%84-smart-contract-520534305aaf)
 
     $ ./scripts/setup.sh  
-      1) reset environment  
-      npm notice created a lockfile as package-lock.json. You should commit this file.  
-      added 71 packages in 4.521s  
-      2) import key from backup files  
-      Loading config file from config/node0.toml  
-      2 account(s) imported  
-      Loading config file from config/node1.toml  
-      2 account(s) imported  
-      3) start two node  
-      4) add nodes   
-      .............................................................................................................................................................  
-      http://localhost:8645: "enode://19e32f769cadbf107a25ce78769ca055dbc349b0384d2f6b6a026265328cf6bf3713d1a574c561650b719ee092edb54649bfd1044d422e2ff23ef08ab3b20098@192.168.1.122:30400"  
-      http://localhost:8545: "enode://5b6021bdb6f889c211153c8eb43d26c863755827bf76ad88eb6be92adacd27fdb4a31c72ad44aee31b87491badcb8478b8439c227245abdcf3285704f593909b@192.168.1.122:30300"  
-      added (http://localhost:8645) to (http://localhost:8545)  
-      5) status   
-      urugang   2824 90.0  1.4 545344 118520 pts/6   Sl+  14:28   0:01 parity --config config/node0.toml  
-      urugang   2825 59.5  1.5 547396 127596 pts/6   Sl+  14:28   0:01 parity ui --config config/node1.toml --ui-no-validation --ports-shift=100  
-      urugang   3716  0.0  0.0  15996  1024 pts/6    S+   14:28   0:00 grep parity
+    1) reset environment  
+    npm notice created a lockfile as package-lock.json. You should commit this file.  
+    added 71 packages in 4.521s  
+    2) import key from backup files  
+    Loading config file from config/node0.toml  
+    2 account(s) imported  
+    Loading config file from config/node1.toml  
+    2 account(s) imported  
+    3) start two node  
+    4) add nodes   
+    .............................................................................................................................................................  
+    http://localhost:8645: "enode://19e32f769cadbf107a25ce78769ca055dbc349b0384d2f6b6a026265328cf6bf3713d1a574c561650b719ee092edb54649bfd1044d422e2ff23ef08ab3b20098@192.168.1.122:30400"  
+    http://localhost:8545: "enode://5b6021bdb6f889c211153c8eb43d26c863755827bf76ad88eb6be92adacd27fdb4a31c72ad44aee31b87491badcb8478b8439c227245abdcf3285704f593909b@192.168.1.122:30300"  
+    added (http://localhost:8645) to (http://localhost:8545)  
+    5) status   
+    urugang   2824 90.0  1.4 545344 118520 pts/6   Sl+  14:28   0:01 parity --config config/node0.toml  
+    urugang   2825 59.5  1.5 547396 127596 pts/6   Sl+  14:28   0:01 parity ui --config config/node1.toml --ui-no-validation --ports-shift=100  
+    urugang   3716  0.0  0.0  15996  1024 pts/6    S+   14:28   0:00 grep parity
 
 # create contract<a id="sec-4" name="sec-4"></a>
 
